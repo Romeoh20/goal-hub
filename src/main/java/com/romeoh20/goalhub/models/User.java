@@ -1,7 +1,9 @@
 package com.romeoh20.goalhub.models;
 
+import jakarta.persistence.Entity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+@Entity
 public class User extends AbstractEntity {
 
     private String username;
