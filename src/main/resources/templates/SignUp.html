@@ -10,13 +10,13 @@
             <label>Username
                 <input th:field="${signUpFormDTO.username}"/>
             </label>
-            <p class="error" th:field="${signUpFormDTO.username}"></p>
+            <p class="error" th:errors="${signUpFormDTO.username}"></p>
         </div>
         <div>
             <label>Password
                 <input th:field="${signUpFormDTO.password}"/>
             </label>
-            <p class ="error" th:field="${signUpFormDTO.password}"></p>
+            <p class ="error" th:errors="${signUpFormDTO.password}"></p>
         </div>
         <div>
             <label>Verify Password
