@@ -6,10 +6,24 @@
 </head>
 <body>
     <form method="post">
-
+        <div>
+            <label>Username
+                <input th:field="${signUpFormDTO.username}"/>
+            </label>
+            <p class="error" th:field="${signUpFormDTO.username}"></p>
+        </div>
+        <div>
+            <label>Password
+                <input th:field="${signUpFormDTO.password}"/>
+            </label>
+            <p class ="error" th:field="${signUpFormDTO.password}"></p>
+        </div>
+        <div>
+            <label>Verify Password
+                <input th:field="${signUpFormDTO.verifyPassword}"/>
+            </label>
+        </div>
+        <input type="submit" value="Sign-Up">
     </form>
-
-
-
 </body>
 </html>
