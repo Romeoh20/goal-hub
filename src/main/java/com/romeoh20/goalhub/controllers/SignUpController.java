@@ -32,7 +32,9 @@ public class SignUpController {
   return user.get();
  }
 
-
+private static void setUserInSession(HttpSession session, User user){
+  session.setAttribute(userSessionKey,user.getId());
+}
 
 
 
