@@ -78,8 +78,4 @@ public String processSignUpForm(@ModelAttribute @Valid SignUpFormDTO signUpFormD
   userRepository.save(newUser);
   return "signup";
 }
-
-
-
-
 }
