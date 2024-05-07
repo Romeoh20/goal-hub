@@ -40,21 +40,21 @@ public class SignUpController {
   return user.get();
  }
 
-private static void setUserInSession(HttpSession session, User user){
+public void setUserInSession(HttpSession session, User user){
   session.setAttribute(userSessionKey,user.getId());
 }
 
-@GetMapping("/SignUp")
+@GetMapping("/signup")
 public String displaySignUpForm(Model model){
   model.addAttribute(new SignUpFormDTO());
-  return "SignUp";
+  return "signup";
 }
 
-@PostMapping("/SignUp")
+@PostMapping("/signup")
 public String processSignUpForm(@ModelAttribute @Valid SignUpFormDTO signUpFormDTO,
-                                Errors errors, HttpServletRequest request, Model model){
+                                Errors errors,HttpServletRequest request){
   if(errors.hasErrors()){
-   return "SignUp";
+   return "signup";
   }
 
   User existingUser = userRepository.findByUsername(signUpFormDTO.getUsername());
@@ -62,7 +62,7 @@ public String processSignUpForm(@ModelAttribute @Valid SignUpFormDTO signUpFormD
   if(existingUser != null){
    errors.rejectValue("username","username.alreadyexists",
            "A user with that name already exists");
-   return "SignUp";
+   return "signup";
   }
 
   String password = signUpFormDTO.getPassword();
@@ -71,15 +71,13 @@ public String processSignUpForm(@ModelAttribute @Valid SignUpFormDTO signUpFormD
   if(!password.equals(verifyPassword)){
    errors.rejectValue("password","password.mismatch",
            "Password does not match");
-   return "SignUp";
+   return "signup";
   }
 
   User newUser = new User(signUpFormDTO.getUsername(),signUpFormDTO.getPassword());
   userRepository.save(newUser);
-  return "SignUp";
+  setUserInSession(request.getSession(), newUser);
+
+  return "signup";
 }
-
-
-
-
 }
