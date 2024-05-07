@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.Optional;
 
 @Controller
-public class UserController {
+public class AuthenticationController {
 
     @Autowired
     UserRepository userRepository;
@@ -120,9 +120,4 @@ public class UserController {
         request.getSession().invalidate();
         return "redirect:/login";
     }
-
-
-
-
-
 }
