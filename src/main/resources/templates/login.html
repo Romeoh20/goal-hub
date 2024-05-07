@@ -5,20 +5,20 @@
     <title></title>
 </head>
 <body>
-<form method="post">
-    <div>
-        <label>Username
-            <input th:field="${loginFormDTO.username}"/>
-        </label>
-        <p class="error" th:errors="${loginFormDTO.username}"></p>
-    </div>
-    <div>
-        <label>Password
-            <input th:field="${loginFormDTO.password}"/>
-        </label>
-        <p class="error" th:errors="${loginFormDTO.password}"></p>
-    </div>
-    <input type="submit" value="Login"/>
-</form>
+    <form method="post">
+        <div>
+            <label>Username
+                <input th:field="${loginFormDTO.username}"/>
+            </label>
+            <p class="error" th:errors="${loginFormDTO.username}"></p>
+        </div>
+        <div>
+            <label>Password
+                <input th:field="${loginFormDTO.password}"/>
+            </label>
+            <p class="error" th:errors="${loginFormDTO.password}"></p>
+        </div>
+        <input type="submit" value="Login"/>
+    </form>
 </body>
 </html>
