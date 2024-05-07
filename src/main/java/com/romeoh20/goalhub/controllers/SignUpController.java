@@ -40,7 +40,7 @@ public class SignUpController {
   return user.get();
  }
 
-private static void setUserInSession(HttpSession session, User user){
+public void setUserInSession(HttpSession session, User user){
   session.setAttribute(userSessionKey,user.getId());
 }
 
@@ -52,7 +52,7 @@ public String displaySignUpForm(Model model){
 
 @PostMapping("/signup")
 public String processSignUpForm(@ModelAttribute @Valid SignUpFormDTO signUpFormDTO,
-                                Errors errors, HttpServletRequest request, Model model){
+                                Errors errors,HttpServletRequest request){
   if(errors.hasErrors()){
    return "signup";
   }
@@ -76,6 +76,8 @@ public String processSignUpForm(@ModelAttribute @Valid SignUpFormDTO signUpFormD
 
   User newUser = new User(signUpFormDTO.getUsername(),signUpFormDTO.getPassword());
   userRepository.save(newUser);
+  setUserInSession(request.getSession(), newUser);
+
   return "signup";
 }
 }
