@@ -26,7 +26,6 @@ public class AuthenticationController {
     private static final String userSessionKey = "user";
 
     public User getUserFromSession (HttpSession session) {
-
         Integer userId = (Integer) session.getAttribute(userSessionKey);
 
         if(userId == null){
@@ -80,7 +79,7 @@ public class AuthenticationController {
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
-        return "signup";
+        return "redirect:";
     }
 
     @GetMapping("/login")

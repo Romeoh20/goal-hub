@@ -12,9 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class DeleteThisController {
 
     @Autowired
-    UserRepository userRepository;
-
-    @Autowired
     AuthenticationController authenticationController;
 
     @GetMapping("/delete")

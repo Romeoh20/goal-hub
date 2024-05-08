@@ -20,7 +20,7 @@ public class AuthenticationFilter implements HandlerInterceptor {
     @Autowired
     AuthenticationController authenticationController;
 
-    private static final List<String> whiteList = Arrays.asList("/login","/signup","/logout","/","css");
+    private static final List<String> whiteList = Arrays.asList("/login", "/signup", "/logout", "/css");
 
     private static boolean isWhiteListed(String path){
         for(String pathRoot : whiteList){
@@ -32,8 +32,8 @@ public class AuthenticationFilter implements HandlerInterceptor {
     }
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response
-                            ,Object handler) throws IOException {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
+                            Object handler) throws IOException {
 
         if(isWhiteListed(request.getRequestURI())){
             return true;
